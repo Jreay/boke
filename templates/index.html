@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+    博客首页<br>
+    {% for article in articles %}
+        <a href="/bold/content/{{ article.id }}">{{ article.title }}</a><br>
+    {% endfor %}
+
+    <a href="/bold/editadd/0">新增博客</a>
+</body>
+</html>
