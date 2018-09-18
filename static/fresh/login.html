@@ -18,10 +18,10 @@
 			<div class="login_form fr">
 				<div class="login_title clearfix">
 					<h1>用户登录</h1>
-					<a href="#">立即注册</a>
+					<a href="/account/fresh/register.html">立即注册</a>
 				</div>
 				<div class="form_input">
-					<form>
+					<!--<form>-->
 						<input type="text" name="username" class="name_input" placeholder="请输入用户名">
 						<div class="user_error">输入错误</div>
 						<input type="password" name="pwd" class="pass_input" placeholder="请输入密码">
@@ -31,8 +31,8 @@
 							<label>记住用户名</label>
 							<a href="#">忘记密码</a>
 						</div>
-						<input type="submit" name="" value="登录" class="input_submit">
-					</form>
+						<input type="button" name="" value="登录" class="input_submit">
+					<!--</form>-->
 				</div>
 			</div>
 		</div>
@@ -53,4 +53,37 @@
 	</div>
 	
 </body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+	$(function () {
+	    $(".input_submit").on("click",()=>{
+	        var name = $(".name_input").val();
+	        var paw = $(".pass_input").val();
+	        if(paw != "" && name != ""){
+                console.log(name)
+                console.log(paw)
+				$.ajax({
+					url:"http://127.0.0.1:8080/user/loginin",
+					type:"POST",
+					dataType:"JSON",
+					data:{
+					    name:name,
+						paw:paw
+					},
+					success:(data)=>{
+						console.log(data)
+                    },
+					error:(err)=>{
+						console.log(err)
+					}
+				})
+			}else{
+	            alert('请输入账号密码')
+			}
+
+		})
+
+    })
+
+</script>
 </html>

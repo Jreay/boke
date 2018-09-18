@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('bold/',include('bold.bold_urls'))
+    path('bold/',include('bold.bold_urls')),
+    path('user/',include('df_user.df_user_urls')),
 ]

@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,14 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bold.apps.BoldConfig',
-    'webapp.apps.WebappConfig',
-]
+    'df_user.apps.DfUserConfig',
+    'df_goods.apps.DfGoodsConfig',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',#跨域验证，前后端分离要关掉
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -81,11 +82,17 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         "ENGINE":"django.db.backends.mysql",
-        "NAME":"boke",
+        # "NAME":"boke",
+        "NAME":"mybestdb",
         "USER":"root",
-        "PASSWORD":"o83ennArmZd2dXn7",
-        "HOST":"10.19.105.146",
-        "PORT":"3306"
+        #"PASSWORD":"o83ennArmZd2dXn7",
+        "PASSWORD":"",
+        # "HOST":"10.19.105.146",
+        "HOST":"localhost",
+        "PORT":"3306",
+        "OPTIONS":{
+            "init_command":"SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
@@ -126,7 +133,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/account/'
 STATICFILES_DIRS=(
      os.path.join(BASE_DIR,'static'),
 )
