@@ -71,10 +71,14 @@
 						paw:paw
 					},
 					success:(data)=>{
-						console.log(data)
+					    if(data.result){
+                            window.location = './index.html'
+						}
+
                     },
 					error:(err)=>{
 						console.log(err)
+						alert('登录失败')
 					}
 				})
 			}else{

@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('bold/',include('bold.bold_urls')),
     path('user/',include('df_user.df_user_urls')),
+
 ]

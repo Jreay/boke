@@ -90,18 +90,26 @@
                 console.log(name)
                 console.log(paw)
                 $.ajax({
-                    url:"http://127.0.0.1:8080/user/loginin",
+                    url:"http://127.0.0.1:8080/user/register",
                     type:"POST",
                     dataType:"JSON",
                     data:{
                         name:name,
-                        paw:paw
+                        paw:paw,
+						cpaw:cpaw,
+						email:email
                     },
                     success:(data)=>{
                         console.log(data)
+						if (data.result){
+                            window.location = './login.html'
+						}else{
+                            alert(data.remark);
+						}
                     },
                     error:(err)=>{
                         console.log(err)
+						alert(err)
                     }
                 })
             }else{

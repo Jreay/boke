@@ -17,9 +17,9 @@ class UserInfo(models.Model):
     userphone = models.CharField(max_length=11,default="")
     # default,blank是python层面的约束，不影响数据库表结构，修改时不需要迁移 python manage.py makemigrations
 
-# class GoodsBrowser(models.Model):
-#     user = models.ForeignKey('username',on_delete=models.CASCADE)
-#     good = models.ForeignKey('df_goods.GoodsInfo',on_delete=models.CASCADE)
+class GoodsBrowser(models.Model):
+    user = models.ForeignKey('UserInfo',on_delete=models.CASCADE)
+    good = models.ForeignKey('df_goods.GoodsInfo',on_delete=models.CASCADE)
 
 
 
